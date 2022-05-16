@@ -78,15 +78,28 @@ for (let i = 0; i < posts.length; i++) {
     printMember(containerHTML, posts[i])
 }
 // seleziono le classi del bottone like 
-const btnLike = document.querySelectorAll(".like-button");
-const btnCounter = document.querySelectorAll(".js-likes-counter");
-//creo un ciclo determinato per selezionare tutti i bottoni like di opgni post 
-//per poi assegnare una funzione all'interno del evento clik
-// for (let i = 0; i < btnLike.length; i++) {
-//     btnLike[i].addEventListener("clik", function() {
-//         btnLike.classList.add("like-button--liked")
-//     })
-// }
-btnLike.addEventListener("click", () => {
-    btnLike.classList.add(".like-button--liked");
-})
+// const btnLike = document.querySelectorAll(".like-button");
+// const btnCounter = document.querySelectorAll(".js-likes-counter");
+// //creo un ciclo determinato per selezionare tutti i bottoni like di opgni post 
+// //per poi assegnare una funzione all'interno del evento clik
+// // for (let i = 0; i < btnLike.length; i++) {
+// //     btnLike[i].addEventListener("clik", function() {
+// //         btnLike.classList.add("like-button--liked")
+// //     })
+// // }
+// btnLike.addEventListener("click", () => {
+//     btnLike.classList.add(".like-button--liked");
+// })
+const likeBtn = document.querySelectorAll(".like-button")
+const likeCoun = document.querySelectorAll(".js-likes-counter")
+
+for (let i = 0; i < likeBtn.length; i++) {
+    likeBtn[i].addEventListener("click", function() {
+        if (this.classList.contains("like-button--liked")) {
+            this.classList.remove("like-button--liked")
+        } else {
+            console.log("aggiungi sta classe")
+            this.classList.add("like-button--liked")
+        }
+    })
+}
