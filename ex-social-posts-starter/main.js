@@ -56,17 +56,24 @@ const posts = [{
 ];
 //creo una funzione che stampi i post tramite il template 
 //per poi ciclare la funzione per la lunghezza del mio ogetto posts
+for (let i = 0; i < posts.length; i++) {
 
-function printMember(container, post) {
-    const postHTML = document.querySelector("#tpl-post").content.cloneNode(true);
-    postHTML.querySelector(".post__text").innerHTML = post.content;
-    postHTML.querySelector(".post__image img").src = post.media;
-    postHTML.querySelector(".post-meta__author").innerHTML = post.author.name;
-    postHTML.querySelector(".post-meta__time").innerHTML = post.created;
-    postHTML.querySelector(".profile-pic").src = post.author.image;
-    postHTML.querySelector("#like-counter-1").innerHTML = post.likes
-    postHTML.querySelector(".like-button").id = post.id
-    container.append(postHTML);
+
+    if (posts[i].author.image === null) {
+        posts[i].author.image = "https://via.placeholder.com/300x300?text=LF"
+    }
+
+    function printPost(container, post) {
+        const postHTML = document.querySelector("#tpl-post").content.cloneNode(true);
+        postHTML.querySelector(".post__text").innerHTML = post.content;
+        postHTML.querySelector(".post__image img").src = post.media;
+        postHTML.querySelector(".post-meta__author").innerHTML = post.author.name;
+        postHTML.querySelector(".post-meta__time").innerHTML = post.created;
+        postHTML.querySelector(".profile-pic").src = post.author.image;
+        postHTML.querySelector("#like-counter-1").innerHTML = post.likes
+        postHTML.querySelector(".like-button").id = post.id
+        container.append(postHTML);
+    }
 }
 
 
@@ -75,7 +82,7 @@ const templateHTML = document.querySelector("#tpl-post").content.cloneNode(true)
 
 
 for (let i = 0; i < posts.length; i++) {
-    printMember(containerHTML, posts[i])
+    printPost(containerHTML, posts[i])
 }
 // seleziono le classi del bottone like 
 // const btnLike = document.querySelectorAll(".like-button");
@@ -98,7 +105,7 @@ for (let i = 0; i < likeBtn.length; i++) {
         if (this.classList.contains("like-button--liked")) {
             this.classList.remove("like-button--liked")
         } else {
-            console.log("aggiungi sta classe")
+
             this.classList.add("like-button--liked")
         }
     })
