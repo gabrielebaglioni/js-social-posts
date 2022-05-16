@@ -55,3 +55,5 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+//creo una funzione che stampi i post tramite il template 
+//per poi ciclare la funzione per la lunghezza del mio ogetto posts
