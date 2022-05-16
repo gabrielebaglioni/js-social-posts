@@ -99,14 +99,15 @@ for (let i = 0; i < posts.length; i++) {
 // })
 const likeBtn = document.querySelectorAll(".like-button")
 const likeCoun = document.querySelectorAll(".js-likes-counter")
+const changeBtn = document.querySelector(".like-buttton__label")
 
 for (let i = 0; i < likeBtn.length; i++) {
     likeBtn[i].addEventListener("click", function() {
         if (this.classList.contains("like-button--liked")) {
             this.classList.remove("like-button--liked")
         } else {
-
             this.classList.add("like-button--liked")
+            likeBtn.innerHTML = "non mi piace";
         }
     })
 }
